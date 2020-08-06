@@ -1,5 +1,5 @@
 module Cipher where
 
 class Cipher a where
-  encode :: a -> String -> String
-  decode :: a -> String -> String
+  encode :: a -> [Char] -> [Char]
+  decode :: a -> [Char] -> [Char]

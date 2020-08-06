@@ -5,7 +5,7 @@ import qualified Otp (applyOTP)
 import Cipher
 
 data Rot = Rot
-data OneTimePad = OTP String
+data OneTimePad = OTP [Char]
 
 instance Cipher Rot where
   encode Rot text = Rot.encode text

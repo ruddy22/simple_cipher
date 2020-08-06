@@ -44,19 +44,19 @@ bitsToInt bits = sum (map (\x -> 2^(snd x)) trueLocations)
 bitsToChar :: Bits -> Char
 bitsToChar bits = toEnum $ bitsToInt bits
 
-applyOTP' :: String -> String -> [Bits]
+applyOTP' :: [Char] -> [Char] -> [Bits]
 applyOTP' pad plainText = map (\pair -> (fst pair) `xor` (snd pair)) (zip padBits plainTextBits)
   where
     padBits = map charToBits pad
     plainTextBits = map charToBits plainText
 
-applyOTP :: String -> String -> String
+applyOTP :: [Char] -> [Char] -> [Char]
 applyOTP pad plainText = map bitsToChar bits
   where
     bits = applyOTP' pad plainText
 
-secretPad :: String
+secretPad :: [Char]
 secretPad = "SuperPuperSecretPad!!!!!"
 
-encodeDecode :: String -> String
+encodeDecode :: [Char] -> [Char]
 encodeDecode str = applyOTP secretPad str
